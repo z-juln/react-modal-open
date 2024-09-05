@@ -1,6 +1,6 @@
 {
   "name": "react-modal-open",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react-modal-open",
   "license": "MIT",
   "sideEffects": [
@@ -55,7 +55,8 @@
     "body-scroll-lock": "^4.0.0-beta.0",
     "classnames": "^2.3.2",
     "rc-util": "^5.43.0",
-    "reset-css": "^5.0.2"
+    "reset-css": "^5.0.2",
+    "type-fest": "^4.26.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.1.2",

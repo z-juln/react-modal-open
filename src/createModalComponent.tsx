@@ -36,10 +36,12 @@ const createRef = <T,>(v: T) => ({ current: v });
  * 
  * const MyModalComponent = createModalComponent(MyModal);
  * 
- * const closeMyModal = MyModalComponent.open();
- * setTimeout(() => {
- *   closeMyModal();
- * }, 3000);
+ * (async () => {
+ *   const closeMyModal = await MyModalComponent.open();
+ *   setTimeout(() => {
+ *     closeMyModal();
+ *   }, 3000);
+ * })();
  */
 const createModalComponent = <
   M extends React.FC<any> | React.ComponentClass<any>,
