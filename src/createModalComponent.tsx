@@ -43,11 +43,21 @@ const createRef = <T,>(v: T) => ({ current: v });
  *   }, 3000);
  * })();
  */
-const createModalComponent = <
+function createModalComponent<
+  M extends React.FC<any> | React.ComponentClass<any>,
+  P extends object = React.ComponentProps<M>,
+  H = HasRequiredKeys<P>,
+>(Modal: M, cfg?: Config): ModalComponent<M, P, H>;
+function createModalComponent<
   M extends React.FC<any> | React.ComponentClass<any>,
   P extends { onClose?: (...args: unknown[]) => unknown; } = React.ComponentProps<M>,
   H = HasRequiredKeys<P>,
->(Modal: M, cfg?: Config): ModalComponent<M, P, H> => {
+>(Modal: M, cfg?: Config): ModalComponent<M, P, H>;
+function createModalComponent<
+  M extends React.FC<any> | React.ComponentClass<any>,
+  P extends { onClose?: (...args: unknown[]) => unknown; } = React.ComponentProps<M>,
+  H = HasRequiredKeys<P>,
+>(Modal: M, cfg?: Config): ModalComponent<M, P, H> {
   const singletonElRef = createRef<HTMLDivElement | null>(null);
 
   const ModalComponent: ModalComponent<M, P, H> = Modal as any;
