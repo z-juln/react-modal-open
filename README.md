@@ -4,13 +4,11 @@
 
 react-modal-open
 
-## Usage
+## Usage1 createModalComponent
 
-```typescript
+```tsx
 // MyModal.tsx
-const MyModal: React.FC<{ onClose?: () => void; }> = ({
-  onClose,
-}) => (
+const MyModal: React.FC<{ onClose?: () => void }> = ({ onClose }) => (
   <div>
     <button onClick={onClose}>close</button>
     MyModal
@@ -28,4 +26,43 @@ import { MyModalComponent } from './MyModal';
     closeMyModal();
   }, 3000);
 })();
+```
+
+## Usage2 CommonModal
+
+```tsx
+import { CommonModal } from 'react-modal-open';
+
+const MyModal: React.FC<{ onClose?: () => void; }> = ({
+  onClose,
+}) => (
+  <CommonModal
+    open
+    wrapperProps={{
+      id: 'xxx',
+      className: 'xxx',
+      data-xxx: 'xxx',
+      style: {
+        width: 500,
+        // ...
+      },
+    }}
+    maskProps={{
+      id: 'xxx',
+      className: 'xxx',
+      data-xxx: 'xxx',
+      style: {
+        width: 500,
+        // ...
+      },
+    }}
+    zIndex={999}
+    maskClosable
+    destroyOnClose
+    onClose={onClose}
+  >
+    <button onClick={onClose}>close</button>
+    MyModal
+  </CommonModal>
+);
 ```
