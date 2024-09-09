@@ -41,7 +41,7 @@ const MyModal: React.FC<{ onClose?: () => void; }> = ({
     wrapperProps={{
       id: 'xxx',
       className: 'xxx',
-      data-xxx: 'xxx',
+      ['data-xxx']: 'xxx',
       style: {
         width: 500,
         // ...
@@ -50,7 +50,7 @@ const MyModal: React.FC<{ onClose?: () => void; }> = ({
     maskProps={{
       id: 'xxx',
       className: 'xxx',
-      data-xxx: 'xxx',
+      ['data-xxx:'] 'xxx',
       style: {
         width: 500,
         // ...
