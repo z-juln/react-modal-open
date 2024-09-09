@@ -1,6 +1,6 @@
 {
   "name": "react-modal-open",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "react-modal-open",
   "license": "MIT",
   "sideEffects": [
@@ -12,6 +12,9 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "url": "https://github.com/z-juln/react-modal-open.git"
+  },
   "scripts": {
     "//": "通过 `yarn new` 创建新的组件",
     "build": "father build",
