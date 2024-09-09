@@ -5,22 +5,17 @@ import renderPromise from './renderPromise';
 
 type CloseFn = () => void;
 
-interface ModalComponent<
-  M,
-  P,
-  HasRequiredKeys,
-  // @ts-ignore
-> extends M {
-  open: HasRequiredKeys extends true? ((props: P) => Promise<CloseFn>) : ((props?: P) => Promise<CloseFn>);
+// @ts-ignore
+interface ModalComponent<M, P, HasRequiredKeys> extends M {
+  open: HasRequiredKeys extends true
+    ? (props: P) => Promise<CloseFn>
+    : (props?: P) => Promise<CloseFn>;
 }
 
 interface Config {
   singleton?: boolean;
 }
 
-interface Ref<T> {
-  current: T;
-}
 const createRef = <T,>(v: T) => ({ current: v });
 
 /**
@@ -33,9 +28,9 @@ const createRef = <T,>(v: T) => ({ current: v });
  *     MyModal
  *   </div>
  * );
- * 
+ *
  * const MyModalComponent = createModalComponent(MyModal);
- * 
+ *
  * (async () => {
  *   const closeMyModal = await MyModalComponent.open();
  *   setTimeout(() => {
@@ -50,12 +45,12 @@ function createModalComponent<
 >(Modal: M, cfg?: Config): ModalComponent<M, P, H>;
 function createModalComponent<
   M extends React.FC<any> | React.ComponentClass<any>,
-  P extends { onClose?: (...args: unknown[]) => unknown; } = React.ComponentProps<M>,
+  P extends { onClose?: (...args: unknown[]) => unknown } = React.ComponentProps<M>,
   H = HasRequiredKeys<P>,
 >(Modal: M, cfg?: Config): ModalComponent<M, P, H>;
 function createModalComponent<
   M extends React.FC<any> | React.ComponentClass<any>,
-  P extends { onClose?: (...args: unknown[]) => unknown; } = React.ComponentProps<M>,
+  P extends { onClose?: (...args: unknown[]) => unknown } = React.ComponentProps<M>,
   H = HasRequiredKeys<P>,
 >(Modal: M, cfg?: Config): ModalComponent<M, P, H> {
   const singletonElRef = createRef<HTMLDivElement | null>(null);
@@ -94,8 +89,8 @@ function createModalComponent<
     );
     return rmModal;
   };
-  
+
   return ModalComponent;
-};
+}
 
 export default createModalComponent;
