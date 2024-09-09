@@ -20,6 +20,7 @@ const createRef = <T,>(v: T) => ({ current: v });
 
 /**
  * @example
+ * // MyModal.tsx
  * const MyModal: React.FC<{ onClose?: () => void; }> = ({
  *   onClose,
  * }) => (
@@ -29,7 +30,10 @@ const createRef = <T,>(v: T) => ({ current: v });
  *   </div>
  * );
  *
- * const MyModalComponent = createModalComponent(MyModal);
+ * export const MyModalComponent = createModalComponent(MyModal);
+ *
+ * // App.tsx
+ * import { MyModalComponent } from './MyModal';
  *
  * (async () => {
  *   const closeMyModal = await MyModalComponent.open();

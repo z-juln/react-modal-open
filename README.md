@@ -6,12 +6,26 @@ react-modal-open
 
 ## Usage
 
-TODO
+```typescript
+// MyModal.tsx
+const MyModal: React.FC<{ onClose?: () => void; }> = ({
+  onClose,
+}) => (
+  <div>
+    <button onClick={onClose}>close</button>
+    MyModal
+  </div>
+);
 
-## Options
+export const MyModalComponent = createModalComponent(MyModal);
 
-TODO
+// App.tsx
+import { MyModalComponent } from './MyModal';
 
-## LICENSE
-
-MIT
+(async () => {
+  const closeMyModal = await MyModalComponent.open();
+  setTimeout(() => {
+    closeMyModal();
+  }, 3000);
+})();
+```
