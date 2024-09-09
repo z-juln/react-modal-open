@@ -6,7 +6,7 @@ import renderPromise from './renderPromise';
 type CloseFn = () => void;
 
 // @ts-ignore
-interface ModalComponent<M, P, HasRequiredKeys> extends M {
+export interface ModalComponent<M, P, HasRequiredKeys> extends M {
   open: HasRequiredKeys extends true
     ? (props: P) => Promise<CloseFn>
     : (props?: P) => Promise<CloseFn>;
