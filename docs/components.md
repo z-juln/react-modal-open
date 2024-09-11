@@ -6,4 +6,4 @@ nav:
 
 # 组件概览
 
-TODO...
+<code src="./component.tsx"></code>
