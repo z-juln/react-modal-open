@@ -33,10 +33,6 @@ const CommonModal: React.FC<CommonModalProps> = ({
   onClose,
 }) => {
   useEffect(() => {
-    return () => enableBodyScroll(document.body);
-  }, []);
-
-  useEffect(() => {
     if (open) {
       disableBodyScroll(document.body, {
         reserveScrollBarGap: true,
