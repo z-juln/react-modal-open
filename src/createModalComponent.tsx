@@ -77,19 +77,35 @@ function createModalComponent<
       }
     };
 
-    await renderPromise(
-      // @ts-ignore
-      <Modal
-        {...restProps}
-        onClose={(...args: any[]) => {
-          setTimeout(() => {
-            rmModal();
-          });
-          return onClose?.(args);
-        }}
-      />,
-      elRef.current,
-    );
+    const render = async () => {
+      if (!elRef.current) return;
+      await renderPromise(
+        // @ts-ignore
+        <Modal
+          {...restProps}
+          onClose={(...args: any[]) => {
+            setTimeout(() => {
+              rmModal();
+            });
+            return onClose?.(args);
+          }}
+        />,
+        elRef.current,
+      );
+    };
+
+    render();
+
+    try {
+      module.hot?.addStatusHandler((status) => {
+        if (status === 'idle') {
+          render();
+        }
+      });
+    } catch {
+      /* eslint no-empty:off */
+    }
+
     return rmModal;
   };
 
