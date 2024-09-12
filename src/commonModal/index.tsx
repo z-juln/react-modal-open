@@ -41,8 +41,9 @@ const CommonModal: React.FC<CommonModalProps> = ({
       disableBodyScroll(document.body, {
         reserveScrollBarGap: true,
       });
-    } else {
-      enableBodyScroll(document.body);
+      return () => {
+        enableBodyScroll(document.body);
+      };
     }
   }, [open]);
 
@@ -69,7 +70,7 @@ const CommonModal: React.FC<CommonModalProps> = ({
           return maskProps?.onClick?.(e);
         }}
       ></div>
-      <div className='rmo-CommonModal__inner'>{children}</div>
+      <div className="rmo-CommonModal__inner">{children}</div>
     </div>,
     document.body,
   );
