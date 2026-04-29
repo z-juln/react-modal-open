@@ -87,7 +87,7 @@ function createModalComponent<
             setTimeout(() => {
               rmModal();
             });
-            return onClose?.(args);
+            return onClose?.(...args);
           }}
         />,
         elRef.current,
